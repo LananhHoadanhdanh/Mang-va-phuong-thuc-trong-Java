@@ -14,17 +14,22 @@ public class Main {
 
     public static void main(String[] args) {
         int[] array = {10,4,8,6,2,7,9,0};
+        int[] newArr = new int[array.length-1];
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập giá trị cần xóa: ");
         int number = scanner.nextInt();
         int index = findIndex(array, number);
         if (index != -1) {
-            System.out.println("Mảng mới: ");
-            for (int i = index; i < array.length-1; i++) {
-                array[i] = array[i + 1];
+            for (int i = 0; i < newArr.length; i++) {
+                if (i < index) {
+                    newArr[i] = array[i];
+                } else {
+                    newArr[i] = array[i + 1];
+                }
             }
-            for (int i = 0; i < array.length-1; i++) {
-                System.out.print(array[i] + "\t");
+            System.out.println("Mảng mới: ");
+            for (int i = 0; i < newArr.length; i++) {
+                System.out.print(newArr[i] + "\t");
             }
         } else {
             System.out.println("Không có giá trị đó trong mảng");
